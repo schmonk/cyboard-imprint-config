@@ -75,18 +75,9 @@
 };
 
 // right hand trackball configuration
+// now used for scrolling
 
 &trackball_peripheral_listener {
-    input-processors =
-        // multiply sensitivity by 1, divide by 2 ,
-        <&zip_xy_scaler 1 2>,
-        // activate layer 3 within 1000ms of the trackball moving,
-        <&zip_temp_layer 3 1000>;
-};
-
-//left hand trackball configuration
-
-&trackball_central_listener {
     input-processors =
         // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,
         <&zip_xy_scaler 1 3>,
@@ -94,4 +85,15 @@
         <&zip_xy_to_scroll_mapper>,
         // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+
+};
+
+//left hand trackball configuration
+
+&trackball_central_listener {
+    input-processors =
+        // multiply sensitivity by 1, divide by 2 ,
+        <&zip_xy_scaler 1 2>,
+                // activate layer 3 within 1000ms of the trackball moving,
+        <&zip_temp_layer 3 1000>;
 };
