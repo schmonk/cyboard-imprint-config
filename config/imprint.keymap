@@ -97,10 +97,6 @@
         <&zip_xy_to_scroll_mapper>,
         // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-
-    // stay awake - ok if wired
-
-    force-awake;
 };
 
 //left hand trackball configuration
@@ -111,8 +107,6 @@
         <&zip_xy_scaler 1 2>,
         // activate layer 3 within 1000ms of the trackball moving,,,,,,
         <&zip_temp_layer 3 1000>;
-        // stay awake - ok if wired
-        force-awake;
 
         //slower on layer 5
         layer-5 {
