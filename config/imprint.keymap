@@ -55,7 +55,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans     &trans     &trans     &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
 &trans  &trans  &trans  &trans  &trans                            &trans     &trans     &trans     &trans  &trans
-                                &trans  &trans  &trans    &trans  &trans     &trans
+                                &mo 5   &trans  &trans    &trans  &trans     &trans
                                 &trans  &trans  &trans    &trans  &trans     &trans
             >;
         };
@@ -91,11 +91,11 @@
 
 &trackball_peripheral_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 30 (make it slower for scrolling),,,,,,
+        // multiply sensitivity by 1, divide by 30 (make it slower for scrolling),,,,,,,
         <&zip_xy_scaler 1 30>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 
     // stay awake - ok if wired
@@ -107,15 +107,16 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 2 ,,,,,,
+        // multiply sensitivity by 1, divide by 2 ,,,,,,,
         <&zip_xy_scaler 1 2>,
-        // activate layer 3 within 1000ms of the trackball moving,,,,,,
+        // activate layer 3 within 1000ms of the trackball moving,,,,,,,
         <&zip_temp_layer 3 1000>;
-        // stay awake - ok if wired
-        force-awake;
 
-        //slower on layer 5
-        layer-5 {
-           input-processors = <&zip_xy_scaler 1 8>;
-    };
+    // stay awake - ok if wired
+
+    force-awake;
+
+    //slower on layer 5
+
+    layer-5 { input-processors = <&zip_xy_scaler 1 8>; };
 };
